@@ -1,1 +1,130 @@
 @import url("nullstyle.css");
+body {
+	height: 100vh;
+	width: 100vw;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(135deg, #000 0%, #333 48%, #686868 100%);
+	background-size: cover;
+}
+.video__player {
+	width: 60%;
+	padding: 40px 0px;
+}
+.video__container {
+	aspect-ratio: 16 / 9;
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+}
+.video__container video {
+	width: 100%;
+}
+/******************************CONTROLS*****************************************/
+.video__controlls {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	/*transform: translateY(40px);*/
+	transition: all 0.3s ease 0s;
+
+	width: 100%;
+	height: 10%;
+	background: rgb(0, 0, 0, 0.3);
+
+	display: flex;
+	align-items: center;
+	padding: 0px 15px;
+
+	line-height: normal;
+}
+.video__container:hover .video__controlls {
+	transform: translateY(0px);
+	transition: all 0.3s ease 0s;
+}
+/***********************************SVG**********************************************/
+.svg-container {
+	width: 20px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #000;
+}
+.svg {
+	height: 100%;
+	width: 100%;
+	transition: all 0.3s ease 0s;
+}
+.svg img {
+	height: 100%;
+	width: 100%;
+}
+button {
+	background: inherit;
+}
+
+/******************************CONTROLS-LEFT*****************************************/
+.controls-left {
+	flex: 0 0 50%;
+	display: flex;
+	border: 1px solid #000;
+	height: 70%;
+}
+/**PLAY**/
+.play-b {
+}
+.play {
+}
+/**NEXT**/
+.next-b {
+	margin: 0px 10px;
+}
+.next {
+}
+/**SOUND**/
+.sound__container {
+	display: flex;
+	border: 1px solid #000;
+	position: relative;
+}
+.sound-b {
+	margin-right: 10px;
+}
+.sound-b img {
+	width: 120%;
+	height: 120%;
+}
+.volume__bar-container {
+	width: 0px;
+	overflow: hidden;
+	display: flex;
+	border: 1px solid #000;
+	transition: all 0.5s ease 0s;
+}
+.volume-bar {
+	background-color: rgb(207, 207, 207);
+	color: rgb(207, 207, 207);
+}
+/**DURATION**/
+.time__container {
+	display: flex;
+	align-items: center;
+	color: rgb(207, 207, 207);
+	font-size: 20px;
+	padding: 0px 5px;
+}
+.current-time {
+}
+.breaker {
+	padding: 0px 5px;
+}
+.total-duration {
+}
+/******************************SOUND__BAR*****************************************/
+.controls-right {
+	flex: 0 0 50%;
+	border: 1px solid #000;
+}

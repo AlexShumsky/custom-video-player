@@ -1,24 +1,30 @@
 'use strict'
 const video = document.querySelector('.video');
 const playButton = document.querySelector('.play-b');
-const soundButton = document.querySelector('.sound-b');
+const playButtonContainer = document.querySelector('.video__playbutton-container');
 const playIcon = document.querySelector('.play');
 
 window.addEventListener('load', functionsManager);
+window.addEventListener('resize', changePlayButtonPosition);
 
 function functionsManager() {
 	playVideoManager();
 	showVideoDurationManager();
 	volumeBarManager();
 	progressBarManager();
+	fullScreenMode();
+	changePlayButtonPosition();
 }
 function volumeBarManager() {
 	const soundContainer = document.querySelector('.sound__container');
 	const volumeBarContainer = document.querySelector('.volume__bar-container');
 	const volumeBar = document.querySelector('.volume-bar');
+	const soundButton = document.querySelector('.sound-b');
 
 	soundContainer.addEventListener('mouseover', showVolumeBar);
 	soundContainer.addEventListener('mouseout', hideVolumeBar);
+	volumeBar.addEventListener('mouseup', changeVolume);
+	soundButton.addEventListener('click', muteVideo);
 
 	function showVolumeBar() {
 		volumeBarContainer.style.width = '120px';
@@ -26,38 +32,60 @@ function volumeBarManager() {
 	function hideVolumeBar() {
 		volumeBarContainer.style.width = '0px';
 	}
-
-	volumeBar.addEventListener('mouseup', changeVolume)
 	function changeVolume() {
 		video.volume = volumeBar.value;
+		(video.volume) ? soundButton.classList.remove('muted') : soundButton.classList.add('muted');
+	}
+
+	function muteVideo() {
+		muteVolume();
+		animateMuteIcon();
+	}
+	function muteVolume() {
+		(!video.muted) ? volumeBar.value = 0 : volumeBar.value = video.volume;
+		video.muted = !video.muted;
+	}
+	function animateMuteIcon() {
+		(!video.muted) ? soundButton.classList.remove('muted') : soundButton.classList.add('muted');
 	}
 }
 function playVideoManager() {
+
 	const nextVideoButton = document.querySelector('.next-b');
 	let counter = 1;
-	playButton.addEventListener('click', playVideo);
 
+	video.addEventListener('click', playVideo)
 	video.addEventListener('ended', changePlayIcon);
+
+	playButton.addEventListener('click', playVideo);
+	playButtonContainer.addEventListener('click', playVideo);
+	nextVideoButton.addEventListener('click', playNextVideo);
 
 	function playVideo() {
 		if (video.paused) {
 			video.play();
 			changePlayIcon();
+			changePlayButtonContainer();
 		}
 		else {
 			video.pause();
 			changePlayIcon();
+			changePlayButtonContainer();
 		}
 	}
-	nextVideoButton.addEventListener('click', playNextVideo);
+
 	function playNextVideo() {
 		(counter == 3) ? (counter = 1) : counter++;
 		video.src = `assets/video/video${counter}.mp4`;
 		changePlayIcon();
 	}
+
 	function changePlayIcon() {
 		(video.paused) ? (playIcon.src = 'assets/img/svg/play.svg', playIcon.style.filter = 'invert(0%)') :
 			(playIcon.src = 'assets/img/svg/pause.svg', playIcon.style.filter = 'invert(70%)');
+	}
+	function changePlayButtonContainer() {
+		(video.paused) ? playButtonContainer.style.display = 'block' : playButtonContainer.style.display = 'none';
 	}
 }
 function showVideoDurationManager() {
@@ -97,4 +125,16 @@ function progressBarManager() {
 		video.currentTime = video.duration * progressPersentage / 100;
 		videoProgressFilled.style.width = progressPersentage + '%';
 	}
+}
+function changePlayButtonPosition() {
+	const videoPlayerHight = document.querySelector('.video__container').offsetHeight;
+	const videoPlayerWidth = document.querySelector('.video__container').offsetWidth;
+	const playButtonContainer = document.querySelector('.video__playbutton-container');
+	playButtonContainer.style.top = `${videoPlayerHight / 2 - 75}px`;
+	playButtonContainer.style.left = `${videoPlayerWidth / 2 - 75}px`;
+}
+function fullScreenMode() {
+	const fullScreenButton = document.querySelector('.fullscreen-b');
+
+	fullScreenButton.addEventListener('click', () => video.requestFullscreen());
 }

@@ -1,1 +1,1 @@
-# custom-video-player
+# https://AlexShumsky.github.io/custom-video-player/

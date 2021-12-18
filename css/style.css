@@ -116,10 +116,12 @@ button {
 	position: relative;
 	margin-right: 10px;
 	opacity: 1;
+	transition: all 0.3s ease 0s;
 }
 
 .sound-b.muted {
 	opacity: 0.5;
+	transition: all 0.3s ease 0s;
 }
 .sound-b.muted::after {
 	content: "";

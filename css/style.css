@@ -225,3 +225,33 @@ input[type="range"]::-ms-fill-upper {
 		transform: scale(1);
 	}
 }
+.rewind {
+	position: absolute;
+	top: 25%;
+	height: 50%;
+	width: 200px;
+	background: rgb(0, 0, 0, 0.5);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	color: rgb(207, 207, 207);
+}
+.rewind img {
+	width: 40px;
+	filter: invert(70%);
+}
+.rewind__forward {
+	right: -100px;
+	padding-right: 10%;
+	display: none;
+}
+.rewind__forward img {
+	transform: rotate(180deg);
+}
+.rewind__backward {
+	left: -100px;
+	padding-left: 10%;
+	display: none;
+}

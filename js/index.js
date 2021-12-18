@@ -80,10 +80,18 @@ function progressBarManager(key = null) {
 	function changeProgressBarPerButtonPress(key) {
 		(key == 'ArrowLeft') ? video.currentTime -= 2 :
 			(key == 'ArrowRight') ? video.currentTime += 2 : false;
+		showRewind(key);
 	}
-}
-function aaa(key = null) {
-	console.log(key);
+	function showRewind(arrowDirection) {
+		const rewindForward = document.querySelector('.rewind__forward');
+		const rewindBackward = document.querySelector('.rewind__backward');
+		(arrowDirection.slice(5) == 'Right') ? rewindForward.style.display = 'flex' :
+			(arrowDirection.slice(5) == 'Left') ? rewindBackward.style.display = 'flex' : false;
+		setTimeout(() => {
+			rewindForward.style.display = 'none';
+			rewindBackward.style.display = 'none'
+		}, 300)
+	}
 }
 
 /*FULLSCREAN*/

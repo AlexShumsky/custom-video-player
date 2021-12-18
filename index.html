@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>custom-video-player</title>
+</head>
+
+<body>
+	<div class="video__player">
+		<div class="video__container">
+			<video class="video" src="assets/video/video1.mp4"></video>
+			<div class="video__playbutton-container">
+				<img src="assets/img/svg/video__play.svg" alt="playButton">
+			</div>
+			<div class="video__controlls">
+				<div class="video-progress">
+					<div class="video-progress-filled"></div>
+				</div>
+				<button class="svg-container play-b">
+					<img src="assets/img/svg/play.svg" alt="play" class="svg play">
+				</button>
+				<button class="svg-container next-b">
+					<img src="assets/img/svg/next.svg" alt="next" class="svg next">
+				</button>
+				<div class="sound__container">
+					<button class="svg-container sound-b">
+						<img src="assets/img/svg/sound.svg" alt="sound" class="svg sound">
+					</button>
+					<div class="volume__bar-container">
+						<input type="range" name="speed" class="volume-bar" min="0" max="1" value="1" step="0.01">
+					</div>
+				</div>
+				<div class="time__container">
+					<div class="current-time">0:00</div>
+					<div class="breaker"> / </div>
+					<div class="total-duration">0:00</div>
+				</div>
+				<button class="svg-container fullscreen-b">
+					<img src="assets/img/svg/fullWindow.svg" alt="play" class="svg fullscreen">
+				</button>
+			</div>
+		</div>
+		<div class="rewind__forward rewind">
+			<img src="assets/img/svg/rewind.svg" alt="rewind">
+			<p>2sec</p>
+		</div>
+		<div class="rewind__backward rewind">
+			<img src="assets/img/svg/rewind.svg" alt="rewind">
+			<p>2sec</p>
+		</div>
+	</div>
+	<script src="js/index.js"></script>
+</body>
+
+</html>

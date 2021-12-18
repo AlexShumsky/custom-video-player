@@ -8,86 +8,110 @@ body {
 	align-items: center;
 	background: linear-gradient(135deg, #000 0%, #333 48%, #686868 100%);
 	background-size: cover;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 .video__player {
 	width: 60%;
+	max-height: 500px;
 	padding: 40px 0px;
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
 }
 .video__container {
 	aspect-ratio: 16 / 9;
-	position: relative;
-	overflow: hidden;
-	border-radius: 5px;
+	width: 100%;
 }
 .video__container video {
 	width: 100%;
 }
+
+/******************************VIDEO-PROGREES-BAR*****************************************/
+
+.video-progress {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 5px;
+	transition: all 0.3s ease 0s;
+	background: rgb(0, 0, 0, 0.4);
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+.video__player:hover .video-progress {
+	height: 20px;
+}
+.video-progress-filled {
+	width: 0%;
+	background: orange;
+	transition: all 0.3s ease 0s;
+}
+
 /******************************CONTROLS*****************************************/
 .video__controlls {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	/*transform: translateY(40px);*/
-	transition: all 0.3s ease 0s;
-
-	width: 100%;
-	height: 10%;
-	background: rgb(0, 0, 0, 0.3);
-
 	display: flex;
-	align-items: center;
-	padding: 0px 15px;
-
+	flex-wrap: wrap;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	min-height: 40px;
+	padding-bottom: 10px;
+	transform: translateY(100%) translateY(-4px);
+	transition: all 0.3s ease 0s;
+	background: rgb(0, 0, 0, 0.4);
 	line-height: normal;
 }
-.video__container:hover .video__controlls {
-	transform: translateY(0px);
+.video__player:hover .video__controlls {
+	transform: translateY(0) translateY(0px);
 	transition: all 0.3s ease 0s;
 }
 /***********************************SVG**********************************************/
 .svg-container {
-	width: 20px;
-	height: 100%;
+	width: 25px;
+	height: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid #000;
 }
 .svg {
 	height: 100%;
 	width: 100%;
-	transition: all 0.3s ease 0s;
 }
 .svg img {
 	height: 100%;
 	width: 100%;
 }
 button {
-	background: inherit;
+	background: transparent;
 }
 
 /******************************CONTROLS-LEFT*****************************************/
 .controls-left {
 	flex: 0 0 50%;
 	display: flex;
-	border: 1px solid #000;
-	height: 70%;
+	flex-wrap: wrap;
+
+	margin-left: 20px;
 }
 /**PLAY**/
 .play-b {
+	margin-left: 20px;
 }
 .play {
 }
 /**NEXT**/
 .next-b {
-	margin: 0px 10px;
+	margin: 0px 20px;
 }
 .next {
 }
 /**SOUND**/
 .sound__container {
 	display: flex;
-	border: 1px solid #000;
 	position: relative;
 }
 .sound-b {
@@ -101,13 +125,57 @@ button {
 	width: 0px;
 	overflow: hidden;
 	display: flex;
-	border: 1px solid #000;
+	align-items: center;
+	justify-content: center;
 	transition: all 0.5s ease 0s;
 }
+/**SOUND-BAR**/
 .volume-bar {
-	background-color: rgb(207, 207, 207);
-	color: rgb(207, 207, 207);
+	transition: all 0.3s ease 0s;
 }
+.volume-bar:hover {
+	transition: all 0.3s ease 0s;
+}
+
+input[type="range"] {
+	overflow: hidden;
+	width: 90%;
+	-webkit-appearance: none;
+	background-color: rgb(207, 207, 207);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	height: 8px;
+	-webkit-appearance: none;
+	color: #13bba4;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	width: 10px;
+	-webkit-appearance: none;
+	height: 10px;
+
+	cursor: pointer;
+	background: rgb(67, 67, 67);
+	box-shadow: -80px 0 0 80px #43e5f7;
+}
+
+input[type="range"]::-moz-range-progress {
+	background-color: #43e5f7;
+}
+
+input[type="range"]::-moz-range-track {
+	background-color: #9a905d;
+}
+
+input[type="range"]::-ms-fill-lower {
+	background-color: #43e5f7;
+}
+
+input[type="range"]::-ms-fill-upper {
+	background-color: #9a905d;
+}
+
 /**DURATION**/
 .time__container {
 	display: flex;
@@ -122,9 +190,4 @@ button {
 	padding: 0px 5px;
 }
 .total-duration {
-}
-/******************************SOUND__BAR*****************************************/
-.controls-right {
-	flex: 0 0 50%;
-	border: 1px solid #000;
 }
